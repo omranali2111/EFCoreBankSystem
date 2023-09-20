@@ -15,6 +15,6 @@ namespace EFCoreBankSystem
         public string Password { get; set; }
        
 
-        public static CurrentUser Instance { get; } = new CurrentUser();
+      
     }
 }
