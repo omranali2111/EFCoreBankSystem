@@ -1,7 +1,17 @@
-﻿internal class Program
+﻿using EFCoreBankSystem;
+
+internal class Program
 {
-    private static void Main(string[] args)
+    public static async Task Main(string[] args)
     {
-        Console.WriteLine("Hello, World!");
+        var userRegistration = new UserRegistration();
+        var exchangeRateService = new ExchangeRateService();
+        var accountOperation = new AccountOperation();
+
+        var menu = new Menu(userRegistration, exchangeRateService, accountOperation);
+
+        menu.Start().Wait();
+
+
     }
 }

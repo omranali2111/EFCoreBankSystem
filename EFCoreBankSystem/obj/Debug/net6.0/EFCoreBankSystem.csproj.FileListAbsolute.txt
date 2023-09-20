@@ -69,3 +69,4 @@ C:\Users\ict\Desktop\code-TRA\EntityFrameworkCore\EFCoreBankSystem\EFCoreBankSys
 C:\Users\ict\Desktop\code-TRA\EntityFrameworkCore\EFCoreBankSystem\EFCoreBankSystem\obj\Debug\net6.0\EFCoreBankSystem.pdb
 C:\Users\ict\Desktop\code-TRA\EntityFrameworkCore\EFCoreBankSystem\EFCoreBankSystem\obj\Debug\net6.0\EFCoreBankSystem.genruntimeconfig.cache
 C:\Users\ict\Desktop\code-TRA\EntityFrameworkCore\EFCoreBankSystem\EFCoreBankSystem\obj\Debug\net6.0\ref\EFCoreBankSystem.dll
+C:\Users\ict\Desktop\code-TRA\EntityFrameworkCore\EFCoreBankSystem\EFCoreBankSystem\bin\Debug\net6.0\Newtonsoft.Json.dll

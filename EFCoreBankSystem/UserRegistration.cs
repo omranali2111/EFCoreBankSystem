@@ -59,8 +59,14 @@ namespace EFCoreBankSystem
             // Use regex.IsMatch to check if the password matches the pattern
             return regex.IsMatch(password);
         }
-        public async Task<bool> UserLogin(string email, string password)
+        public async Task<bool> UserLogin()
         {
+            Console.WriteLine("Enter your email: ");
+            string email = Console.ReadLine();
+
+            Console.WriteLine("Enter your password: ");
+            string password = Console.ReadLine();
+
             using (var dbContext = new BankSysDBContext())
             {
                 var user = dbContext.Users.FirstOrDefault(u => u.Email == email && u.Password == password);
@@ -74,7 +80,6 @@ namespace EFCoreBankSystem
                         Name = user.Name,
                         Email = user.Email
                     };
-
 
                     Console.WriteLine("Login successful!");
                     Console.WriteLine("---------------------------");
@@ -91,6 +96,11 @@ namespace EFCoreBankSystem
                     return false; // Email or password is incorrect
                 }
             }
+        }
+
+        public CurrentUser GetCurrentUser()
+        {
+            return currentUser;
         }
 
     }
