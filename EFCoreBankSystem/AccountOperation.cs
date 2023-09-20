@@ -318,14 +318,50 @@ namespace EFCoreBankSystem
             {
                 try
                 {
+                    // Ensure that both sourceAccountNumber and targetAccountNumber are not null
+                    if (!sourceAccountNumber.HasValue && !targetAccountNumber.HasValue)
+                    {
+                        Console.WriteLine("Both sourceAccountNumber and targetAccountNumber cannot be null.");
+                        return;
+                    }
+
+                    // Create a new transaction
+                    int? newww= dbContext.Accounts.FirstOrDefault(a => a.AccountNumber == (sourceAccountNumber ?? targetAccountNumber))?.AccountNumber;
                     var transaction = new Transaction
                     {
+                        
                         Timestamp = DateTime.Now,
                         Type = transactionType,
                         Amount = amount,
-                        SrcAccNO = sourceAccountNumber,
-                        TargetAccNO = targetAccountNumber
+                        SrcAccNO = sourceAccountNumber ?? newww, // Set to AccountNumber if sourceAccountNumber is null
+                        TargetAccNO = targetAccountNumber ?? null // Set to null if targetAccountNumber is null
                     };
+
+
+                    //If sourceAccountNumber is provided, set the AccountId accordingly
+                    if (sourceAccountNumber.HasValue || targetAccountNumber.HasValue)
+                    {
+                        var account = dbContext.Accounts
+                            .FirstOrDefault(a => a.AccountNumber == (sourceAccountNumber ?? targetAccountNumber));
+
+                        if (account != null)
+                        {
+                            // The account exists, you can proceed to create the transaction.
+                            transaction.account = account;
+
+                            // Rest of your transaction recording logic
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid source or target account number.");
+                        }
+                    }
+
+
+
+
+
+
 
                     dbContext.Transactions.Add(transaction);
                     dbContext.SaveChanges();
@@ -335,9 +371,15 @@ namespace EFCoreBankSystem
                 catch (Exception e)
                 {
                     Console.WriteLine("An error occurred while recording the transaction: " + e.Message);
+                    if (e.InnerException != null)
+                    {
+                        Console.WriteLine("Inner Exception: " + e.InnerException.Message);
+                        Console.WriteLine("Inner Exception Stack Trace: " + e.InnerException.StackTrace);
+                    }
                 }
             }
         }
+
 
         public void ViewTransactionHistory(int userId, string period)
         {

@@ -12,7 +12,7 @@ namespace EFCoreBankSystem
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
 
-            options.UseSqlServer("Data Source=(local);Initial Catalog=EFCoreBankSystem; Integrated Security=true; TrustServerCertificate=True");
+            options.UseSqlServer("Data Source=(local);Initial Catalog=EFCoreBankSystem1; Integrated Security=true; TrustServerCertificate=True");
 
         }
         public DbSet<Transaction> Transactions { get; set; }

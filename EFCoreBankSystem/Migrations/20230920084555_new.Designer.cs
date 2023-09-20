@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EFCoreBankSystem.Migrations
 {
     [DbContext(typeof(BankSysDBContext))]
-    [Migration("20230920064352_createclasses")]
-    partial class createclasses
+    [Migration("20230920084555_new")]
+    partial class @new
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -27,7 +27,7 @@ namespace EFCoreBankSystem
         public User User { get; set; }
 
         // Navigation property to represent the relationship with the User entity
-        [ForeignKey("UserId")]
+        [ForeignKey("User")]
         public int UserId { get; set; }
 
         public List<Transaction> transaction { get; set; }
