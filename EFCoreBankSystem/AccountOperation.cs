@@ -253,24 +253,19 @@ namespace EFCoreBankSystem
                                         // Update the source account balance with the new amount after transfer
                                         sourceAccount.Balance -= transferAmount;
 
-                                        // Check if the target account belongs to the current user or another user
+                                        // Check if the target account belongs to  user 
                                         var targetAccount = dbContext.Accounts.FirstOrDefault(a => a.AccountNumber == targetAccountNumber);
 
                                         if (targetAccount != null)
                                         {
-                                            if (targetAccount.UserId == userId)
-                                            {
-                                                // Transfer to own account
+                                            
+                                                // Transfer to  account
                                                 targetAccount.Balance += transferAmount;
                                                 dbContext.SaveChanges();
 
                                                 Console.WriteLine("Transfer successful!");
                                                 RecordTransaction("Transfer", transferAmount, sourceAccountNumber, targetAccountNumber);
-                                            }
-                                            else
-                                            {
-                                                Console.WriteLine("You can only transfer to your own accounts.");
-                                            }
+                                           
                                         }
                                         else
                                         {
@@ -330,7 +325,7 @@ namespace EFCoreBankSystem
                     var transaction = new Transaction
                     {
                         
-                        Timestamp = DateTime.Now,
+                        Timestamp = DateTime.Now, 
                         Type = transactionType,
                         Amount = amount,
                         SrcAccNO = sourceAccountNumber ?? newww, // Set to AccountNumber if sourceAccountNumber is null
